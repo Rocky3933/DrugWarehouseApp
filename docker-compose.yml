@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    image: drug-warehouse-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5444/drugwarehouse
+      - SPRING_DATASOURCE_USERNAME=drugwarehouse
+      - SPRING_DATASOURCE_PASSWORD=drugwarehouse321
+
+  db:
+    image: edb14
+    ports:
+      - "5444:5444"
+    environment:
+      - POSTGRES_DB=drugwarehouse
+      - POSTGRES_USER=drugwarehouse
+      - POSTGRES_PASSWORD=drugwarehouse321
+
